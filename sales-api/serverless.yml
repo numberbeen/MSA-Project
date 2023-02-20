@@ -1,5 +1,11 @@
 service: sales-api
 frameworkVersion: '3'
+plugins:
+  - serverless-dotenv-plugin
+# npm i -D serverless-dotenv-plugin
+
+# custom:
+#   env: ${file(./env/${opt:stage,'db'}.json)}
 
 provider:
   name: aws
@@ -11,3 +17,9 @@ functions:
     handler: handler.handler
     events:
       - httpApi: '*'
+
+# enviroment:
+#   host: $(self:custom.env.HOSTNAME)
+#   user: $(self:custom.env.USERNAME)
+#   password: $(self:custom.env.PASSWORD)
+#   database: $(self:custom.env.numberbeen)

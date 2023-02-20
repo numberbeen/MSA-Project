@@ -20,7 +20,7 @@ const connectDb = async (req, res, next) => {
 }
 
 const getProduct = (sku) => `
-  SELECT BIN_TO_UUID(product_id) as product_id, name, price, stock, BIN_TO_UUID(factory_id), BIN_TO_UUID(ad_id)
+  SELECT BIN_TO_UUID(product_id) as product_id, name, price, stock, BIN_TO_UUID(factory_id) as factory_id, BIN_TO_UUID(ad_id)
   FROM product
   WHERE sku = "${sku}"
 `
