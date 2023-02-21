@@ -14,8 +14,8 @@ app.post("/product/donut", connectDb, async (req, res, next) => {
   )
   if (result.length > 0) {
     const product = result[0]
-    const incremental = req.body.stock || 0
-
+    const incremental = req.body.MessageAttributeProductCnt || 0 // 애만 수정함 !!!!
+    console.log(req.body);
     await req.conn.query(increaseStock(product.product_id, incremental))
     return res.status(200).json({ message: `입고 완료! 남은 재고: ${product.stock + incremental}`});
   } else {

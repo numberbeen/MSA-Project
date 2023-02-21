@@ -9,5 +9,11 @@ provider:
 functions:
   api:
     handler: handler.handler
+    enviroment:
+      HOSTNAME: project3-database.cpajpop7ewnt.ap-northeast-2.rds.amazonaws.com
+      USERNAME: project3admin
+      PASSWORD: project3admin
+      DATABASE: numberbeen
+      TOPIC_ARN: arn:aws:sns:ap-northeast-2:155393600104:project3SNS
     events:
       - httpApi: '*'
