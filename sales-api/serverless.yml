@@ -4,9 +4,6 @@ plugins:
   - serverless-dotenv-plugin
 # npm i -D serverless-dotenv-plugin
 
-# custom:
-#   env: ${file(./env/${opt:stage,'db'}.json)}
-
 provider:
   name: aws
   runtime: nodejs14.x
@@ -15,11 +12,11 @@ provider:
 functions:
   api:
     handler: handler.handler
+    # enviroment:
+    #   HOSTNAME: project3-database.cpajpop7ewnt.ap-northeast-2.rds.amazonaws.com
+    #   USERNAME: project3admin
+    #   PASSWORD: project3admin
+    #   DATABASE: numberbeen
+    #   TOPIC_ARN: arn:aws:sns:ap-northeast-2:155393600104:project3SNS
     events:
       - httpApi: '*'
-
-# enviroment:
-#   host: $(self:custom.env.HOSTNAME)
-#   user: $(self:custom.env.USERNAME)
-#   password: $(self:custom.env.PASSWORD)
-#   database: $(self:custom.env.numberbeen)

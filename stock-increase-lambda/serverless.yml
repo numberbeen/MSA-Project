@@ -1,11 +1,5 @@
 service: stock-increase-lambda
 frameworkVersion: '3'
-plugins:
-  - serverless-dotenv-plugin
-# npm i -D serverless-dotenv-plugin
-
-# custom:
-#   env: ${file(./env/${opt:stage,'db'}.json)}
 
 provider:
   name: aws
@@ -17,24 +11,3 @@ functions:
     handler: handler.handler
     events:
       - httpApi: '*'
-  dispatcher:
-    handler: handler.handler
-    events:
-      - sns:
-          arn: !Ref SuperTopic
-          topicName: Project3Topic
- 
-resources:
-  Resources:
-    MyTopic:
-      Type: AWS::SNS::Topic
-      Properties:
-        DisplayName: 'project3SNS'
-        TopicName: MyFinalTopic
-
-
-# enviroment:
-#   host: $(self:custom.env.HOSTNAME)
-#   user: $(self:custom.env.USERNAME)
-#   password: $(self:custom.env.PASSWORD)
-#   database: $(self:custom.env.numberbeen)

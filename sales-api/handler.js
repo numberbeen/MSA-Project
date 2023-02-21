@@ -51,7 +51,7 @@ app.post("/checkout", connectDb, async (req, res, next) => {
         },
         TopicArn: process.env.TOPIC_ARN,
       };
-      console.log(product)
+      console.log("이 값을 이용 : ", product)
 
       const result = await sns.publish(params).promise();
 

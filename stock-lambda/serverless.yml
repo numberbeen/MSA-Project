@@ -1,0 +1,16 @@
+service: stock-lambda
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-northeast-2
+
+functions:
+  producer:
+    handler: index.consumer
+    events:
+      - sqs: arn:aws:sqs:ap-northeast-2:155393600104:Project-SQS
+
+plugins:
+  - serverless-lift
